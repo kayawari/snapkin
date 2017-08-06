@@ -10,8 +10,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: {maximum: 50}
   validates :nick_name, presence: true, length: {maximum: 50}
   # TODO: 経度、緯度のformatを設定
-  validates :default_lat, presence: true
-  validates :default_lng, presence: true
+  # validates :default_lat
+  # validates :default_lng
 
   has_secure_password
   validates :password, presence: true, length: {minimum: 8}
