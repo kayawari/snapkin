@@ -12,4 +12,7 @@ class User < ApplicationRecord
   # TODO: 経度、緯度のformatを設定
   validates :default_lat, presence: true
   validates :default_lng, presence: true
+
+  has_secure_password
+  validates :password, presence: true, length: {minimum: 8}
 end
