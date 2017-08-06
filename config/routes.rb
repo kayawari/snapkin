@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # TODO: ログイン画面を作ったらコメントアウト取る
-  # root 'login'
-
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
   resources :users
 end
