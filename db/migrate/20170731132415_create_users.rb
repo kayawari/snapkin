@@ -6,8 +6,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string  :first_name,       null: false
       t.string  :last_name,        null: false
       t.string  :nick_name,        null: false
-      t.string  :default_lat, null: false, comment: 'デフォルトの緯度'
-      t.string  :default_lng, null: false, comment: 'デフォルトの経度'
+      t.string  :default_lat, null: false, default: 0, comment: 'デフォルトの緯度'
+      t.string  :default_lng, null: false, default: 0, comment: 'デフォルトの経度'
       t.timestamps
     end
   end

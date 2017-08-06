@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20170806082713) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "nick_name", null: false
-    t.string "default_lat", null: false, comment: "デフォルトの緯度"
-    t.string "default_lng", null: false, comment: "デフォルトの経度"
+    t.string "default_lat", default: "0", null: false, comment: "デフォルトの緯度"
+    t.string "default_lng", default: "0", null: false, comment: "デフォルトの経度"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
