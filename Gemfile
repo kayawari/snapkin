@@ -16,9 +16,13 @@ gem 'haml-rails', '~> 0.9'
 gem 'bcrypt', '3.1.7'
 
 group :development, :test do
+  gem 'bullet'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'factory_girl_rails'
+  gem 'pry-byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
