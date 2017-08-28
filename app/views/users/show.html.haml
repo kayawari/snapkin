@@ -1,0 +1,11 @@
+= render 'layouts/flashes'
+%h1 ようこそ！！ #{@user.first_name}#{@user.last_name}さん
+.user_info
+  %p= @user.first_name
+  %p= @user.last_name
+  %p= @user.email
+  %p= @user.nick_name
+  %p= @user.default_lat
+  %p= @user.default_lng
+  %hr
+  = link_to 'ログアウト', logout_path
