@@ -17,4 +17,10 @@ class DiariesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def diary_params
+    params.require(:diary).permit(:title, :content, :image_id, :lat, :lng, :category_id, :journey_time)
+  end
 end
