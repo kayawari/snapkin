@@ -1,0 +1,12 @@
+= render 'layouts/flashes'
+%h1 日記登録
+= form_for @diary do |f|
+  = f.label :title
+  = f.text_field :title
+  = f.label :content
+  = f.text_area :content
+  = f.label :lat
+  = f.text_field :lat
+  = f.label :lng
+  = f.text_field :lng
+  = f.submit '日記登録'
