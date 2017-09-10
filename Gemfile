@@ -15,6 +15,8 @@ gem 'haml-rails', '~> 0.9'
 gem 'seed-fu', '~> 2.3'
 # create hashed password
 gem 'bcrypt', '3.1.7'
+# fileアップローダ
+gem 'carrierwave'
 
 group :development, :test do
   gem 'bullet'

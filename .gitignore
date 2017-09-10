@@ -28,3 +28,6 @@ config/database.yml
 config/secrets.yml
 logfile
 
+public/uploads
+public/uploads/diary
+
