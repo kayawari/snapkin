@@ -18,9 +18,16 @@ class DiariesController < ApplicationController
   end
 
   def edit
+    @diary = Diary.find(params[:id])
   end
 
   def update
+    diary = Diary.find(params[:id])
+    if diary.update(diary_params)
+      redirect_to diaries_url, notice: '日記を編集しました'
+    else
+      render :index
+    end
   end
 
   def destroy
