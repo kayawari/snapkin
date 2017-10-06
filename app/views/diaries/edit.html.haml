@@ -22,3 +22,4 @@
       = f.label '画像削除'
       = f.check_box :remove_image
   = f.submit '日記登録'
+= link_to '削除', diary_path(@diary), method: :delete, data: {confirm: 'この日記を本当に削除してもいいですか？'}
