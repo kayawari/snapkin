@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806082713) do
+ActiveRecord::Schema.define(version: 20170910164548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,30 +18,25 @@ ActiveRecord::Schema.define(version: 20170806082713) do
   create_table "diaries", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
-    t.bigint "image_id_id", null: false
     t.string "lat", null: false, comment: "緯度"
     t.string "lng", null: false, comment: "経度"
-    t.bigint "category_id_id"
+    t.bigint "category_id"
     t.datetime "journey_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id_id"], name: "index_diaries_on_category_id_id"
-    t.index ["image_id_id"], name: "index_diaries_on_image_id_id"
+    t.bigint "user_id"
+    t.string "image"
+    t.index ["category_id"], name: "index_diaries_on_category_id"
+    t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
   create_table "diary_categories", force: :cascade do |t|
-    t.bigint "user_id_id"
+    t.bigint "user_id"
     t.string "name"
     t.string "color", limit: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id_id"], name: "index_diary_categories_on_user_id_id"
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_diary_categories_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

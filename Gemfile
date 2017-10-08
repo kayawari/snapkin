@@ -11,16 +11,19 @@ gem 'unicorn'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'haml-rails', '~> 0.9'
-
+# seedの記述を便利にしてくれるgem
+gem 'seed-fu', '~> 2.3'
 # create hashed password
 gem 'bcrypt', '3.1.7'
+# fileアップローダ
+gem 'carrierwave'
 
 group :development, :test do
   gem 'bullet'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'pry-byebug'
   gem 'rspec-rails'
 end

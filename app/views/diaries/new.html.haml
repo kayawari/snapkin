@@ -1,0 +1,24 @@
+= render 'layouts/flashes'
+= render 'layouts/error', object: @diary
+%h1 日記登録
+= form_for @diary do |f|
+  = f.label :title
+  = f.text_field :title
+  = f.label :content
+  = f.text_area :content
+  = f.label :lat
+  = f.text_field :lat
+  = f.label :lng
+  = f.text_field :lng
+  .field
+    - if @diary.image?
+      = image_tag @diary.image.url
+    %br
+    = f.label :image
+    = f.file_field :image
+    = f.hidden_field :image_cache
+  .field
+    - if @diary.persisted? && @diary.image?
+      = f.label '画像削除'
+      = f.check_box :remove_image
+  = f.submit '日記登録'
