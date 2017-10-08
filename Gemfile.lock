@@ -231,7 +231,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   carrierwave
-  factory_girl_rails
+  factory_girl_rails (~> 4.0)
   haml-rails (~> 0.9)
   listen (>= 3.0.5, < 3.2)
   pg
