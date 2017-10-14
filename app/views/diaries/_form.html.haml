@@ -1,0 +1,26 @@
+= form_for object do |f|
+  = f.label :title
+  = f.text_field :title
+  = f.label :content
+  = f.text_area :content
+  = f.label :lat
+  = f.text_field :lat
+  = f.label :lng
+  = f.text_field :lng
+  = f.label :journey_time
+  = f.datetime_select :journey_time
+  = f.fields_for :categories do |category|
+    = category.label :name
+    = category.text_field :name
+  .field
+    - if object.image?
+      = image_tag object.image.url
+    %br
+    = f.label :image
+    = f.file_field :image
+    = f.hidden_field :image_cache
+  .field
+    - if object.persisted? && object.image?
+      = f.label '画像削除'
+      = f.check_box :remove_image
+  = f.submit '登録'

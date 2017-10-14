@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 20171014142419) do
   end
 
   create_table "diary_categories", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "diary_id"
     t.string "name"
     t.string "color", limit: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_diary_categories_on_user_id"
+    t.index ["diary_id"], name: "index_diary_categories_on_diary_id"
   end
 
   create_table "users", force: :cascade do |t|
