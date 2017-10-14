@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910164548) do
+ActiveRecord::Schema.define(version: 20171014142419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20170910164548) do
   create_table "diaries", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
-    t.string "lat", null: false, comment: "緯度"
-    t.string "lng", null: false, comment: "経度"
+    t.float "lat", null: false, comment: "緯度"
+    t.float "lng", null: false, comment: "経度"
     t.bigint "category_id"
     t.datetime "journey_time"
     t.datetime "created_at", null: false
