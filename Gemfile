@@ -17,6 +17,8 @@ gem 'seed-fu', '~> 2.3'
 gem 'bcrypt', '3.1.7'
 # fileアップローダ
 gem 'carrierwave'
+# module bundler
+gem 'webpacker'
 
 group :development, :test do
   gem 'bullet'

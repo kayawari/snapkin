@@ -31,3 +31,6 @@ logfile
 public/uploads
 public/uploads/diary
 
+/public/packs
+/public/packs-test
+/node_modules
