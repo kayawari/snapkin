@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_url(@user)
     else
-      flash.now[:danger] = 'ログインできません'
+      flash.now[:alert] = 'ログインできません'
       render :new
     end
   end
