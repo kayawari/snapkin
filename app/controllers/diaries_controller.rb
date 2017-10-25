@@ -4,6 +4,10 @@ class DiariesController < ApplicationController
     @diaries = user.diaries
   end
 
+  def show
+    @diary = Diary.find(params[:id])
+  end
+
   def new
     @diary = Diary.new
 

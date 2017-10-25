@@ -8,6 +8,7 @@
   - if d.image?
     = image_tag d.image.url
   = link_to '編集', edit_diary_path(d.id)
+  = link_to 'この日記を見る', diary_path(d.id)
   %hr
 = link_to 'プロフィール', user_path(current_user)
 = link_to '新規日記投稿', new_diary_path

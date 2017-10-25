@@ -1,0 +1,10 @@
+%h1 @diary.title
+%p= @diary.content
+%p= @diary.lat
+%p= @diary.lng
+- if @diary.image?
+  = image_tag @diary.image.url
+= link_to '編集', edit_diary_path(@diary.id)
+%hr
+= link_to '新規日記投稿', new_diary_path
+= link_to '戻る', :back
