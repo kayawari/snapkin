@@ -6,6 +6,8 @@ class DiariesController < ApplicationController
 
   def new
     @diary = Diary.new
+
+    # カテゴリタグの入力フォームを3つ作成する
     3.times { @diary.categories.build }
   end
 
