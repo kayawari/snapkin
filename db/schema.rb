@@ -20,20 +20,17 @@ ActiveRecord::Schema.define(version: 20171014142419) do
     t.text "content", null: false
     t.float "lat", null: false, comment: "緯度"
     t.float "lng", null: false, comment: "経度"
-    t.bigint "category_id"
     t.datetime "journey_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "image"
-    t.index ["category_id"], name: "index_diaries_on_category_id"
     t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
   create_table "diary_categories", force: :cascade do |t|
     t.bigint "diary_id"
     t.string "name"
-    t.string "color", limit: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["diary_id"], name: "index_diary_categories_on_diary_id"
