@@ -10,7 +10,7 @@ gem 'pg'
 gem 'unicorn'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'haml-rails', '~> 0.9'
+gem 'haml', git: 'https://github.com/haml/haml'
 # seedの記述を便利にしてくれるgem
 gem 'seed-fu', '~> 2.3'
 # create hashed password
