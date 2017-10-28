@@ -1,10 +1,27 @@
 %h1 @diary.title
 %p= @diary.content
-%p= @diary.lat
-%p= @diary.lng
+%p#lat-value{data: {lat: @diary.lat}}= @diary.lat
+%p#lng-value{data: {lng: @diary.lng}}= @diary.lng
 - if @diary.image?
   = image_tag @diary.image.url
 = link_to '編集', edit_diary_path(@diary.id)
+
+%div#map
+
+:javascript
+  var map;
+  var lng = document.getElementById('lng-value');
+  var lng_value = parseFloat(lng.getAttribute("data-lng"));
+  var lat = document.getElementById('lat-value');
+  var lat_value = parseFloat(lat.getAttribute("data-lat"));
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: lat_value, lng: lng_value},
+      zoom: 8
+    });
+  }
+<script src="https://maps.googleapis.com/maps/api/js?key=#{google_map_api_key}&callback=initMap" async defer></script>
+
 %hr
 = link_to '新規日記投稿', new_diary_path
 = link_to '戻る', :back
