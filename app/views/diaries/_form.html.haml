@@ -3,10 +3,6 @@
   = f.text_field :title
   = f.label :content
   = f.text_area :content
-  = f.label :lat
-  = f.text_field :lat
-  = f.label :lng
-  = f.text_field :lng
   = f.label :journey_time
   = f.datetime_select :journey_time
   = f.fields_for :categories do |category|
@@ -16,6 +12,10 @@
     %input#address{type: 'textbox', value: '東京駅'}
     %input{type: 'button', value: '地図検索', onclick: 'codeAddress()'}
   #map{style: 'width: 320px; height: 480px;'}
+  = f.label :lat
+  #lat-value{data: {lat: object.lat}}= f.text_field :lat
+  = f.label :lng
+  #lng-value{data: {lng: object.lng}}= f.text_field :lng
   .field
     - if object.image?
       = image_tag object.image.url
@@ -33,14 +33,18 @@
 :javascript
   var geocoder;
   var map;
+  var lng = document.getElementById('lng-value');
+  var lng_value = parseFloat(lng.getAttribute("data-lng"));
+  var lat = document.getElementById('lat-value');
+  var lat_value = parseFloat(lat.getAttribute("data-lat"));
 
   function init() {
     geocoder = new google.maps.Geocoder();
 
     // TODO: デフォルトの緯度経度は後で決める
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var latlng = new google.maps.LatLng(lat_value, lng_value);
     var mapOptions = {
-      zoom: 8,
+      zoom: 11,
       center: latlng
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -57,6 +61,10 @@
           map: map,
           position: results[0].geometry.location
         });
+
+        // 緯度、経度のフォームを更新する
+        lng.children[0].value = results[0].geometry.location.lng();
+        lat.children[0].value = results[0].geometry.location.lat();
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
