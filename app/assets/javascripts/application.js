@@ -13,4 +13,4 @@
 //= require rails-ujs
 //= require_tree .
 
-@import 'bootstrap/dist/css/bootstrap'
+@import 'bootstrap/dist/css/bootstrap';

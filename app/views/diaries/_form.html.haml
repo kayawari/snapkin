@@ -12,6 +12,10 @@
   = f.fields_for :categories do |category|
     = category.label :name
     = category.text_field :name
+  %div
+    %input#address{type: 'textbox', value: '東京駅'}
+    %input{type: 'button', value: '地図検索', onclick: 'codeAddress()'}
+  #map{style: 'width: 320px; height: 480px;'}
   .field
     - if object.image?
       = image_tag object.image.url
@@ -24,3 +28,41 @@
       = f.label '画像削除'
       = f.check_box :remove_image
   = f.submit '登録'
+
+<script src="https://maps.googleapis.com/maps/api/js?key=#{google_map_api_key}&callback=initMap" async defer></script>
+:javascript
+  var geocoder;
+  var map;
+
+  function init() {
+    geocoder = new google.maps.Geocoder();
+
+    // TODO: デフォルトの緯度経度は後で決める
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var mapOptions = {
+      zoom: 8,
+      center: latlng
+    };
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  }
+
+  function codeAddress() {
+    var address = document.getElementById('address').value;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if(status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+
+        // 地図にマーカーを付ける
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
+  window.onload = function () {
+    init();
+  };
