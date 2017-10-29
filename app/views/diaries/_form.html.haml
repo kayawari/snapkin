@@ -28,8 +28,8 @@
       = f.label '画像削除'
       = f.check_box :remove_image
   = f.submit '登録'
+=render 'layouts/google_map_api'
 
-<script src="https://maps.googleapis.com/maps/api/js?key=#{google_map_api_key}&callback=initMap" async defer></script>
 :javascript
   var geocoder;
   var map;
