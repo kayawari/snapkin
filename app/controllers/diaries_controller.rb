@@ -12,6 +12,7 @@ class DiariesController < ApplicationController
     @diary = Diary.new
 
     # カテゴリタグの入力フォームを3つ作成する
+    # TODO: カテゴリタグはどうやって反映させるか考える
     # 3.times { @diary.categories.build }
   end
 

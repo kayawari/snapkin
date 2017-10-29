@@ -40,14 +40,16 @@
 
   function init() {
     geocoder = new google.maps.Geocoder();
-
-    // TODO: デフォルトの緯度経度は後で決める
     var latlng = new google.maps.LatLng(lat_value, lng_value);
     var mapOptions = {
-      zoom: 11,
+      zoom: 12,
       center: latlng
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var marker = new google.maps.Marker({
+      map: map,
+      position: {lat: lat_value, lng: lng_value}
+    });
   }
 
   function codeAddress() {
