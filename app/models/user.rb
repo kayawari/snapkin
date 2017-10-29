@@ -5,7 +5,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # メールアドレスは大文字小文字を区別しないのでcase_sensitive: false
   validates :email, presence: true, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX},
-            uniqueness: {case_sensitive: false}
+            uniqueness: {case_sensitive: false}, on: :create
   validates :first_name, presence: true, length: {maximum: 50}
   validates :last_name, presence: true, length: {maximum: 50}
   validates :nick_name, presence: true, length: {maximum: 50}
@@ -14,5 +14,5 @@ class User < ApplicationRecord
   # validates :default_lng
 
   has_secure_password
-  validates :password, presence: true, length: {minimum: 8}
+  validates :password, presence: true, length: {minimum: 8}, on: :create
 end
