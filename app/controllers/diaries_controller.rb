@@ -12,7 +12,7 @@ class DiariesController < ApplicationController
     @diary = Diary.new
 
     # カテゴリタグの入力フォームを3つ作成する
-    3.times { @diary.categories.build }
+    # 3.times { @diary.categories.build }
   end
 
   def create
