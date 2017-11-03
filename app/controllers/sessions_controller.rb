@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
     redirect_to user_path(session[:user_id]) unless session[:user_id].nil?
   end
 
-  # TODO: スペック書く
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
@@ -15,7 +14,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  # TODO: スペック書く
   def destroy
     session.delete(:user_id)
     @current_user = nil
