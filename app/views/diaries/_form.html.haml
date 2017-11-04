@@ -18,7 +18,8 @@
   .uk-form-controls#lng-value{data: {lng: object.lng}}= f.text_field :lng, class: 'uk-input uk-form-small disabled'
   .field.uk-margin
     - if object.image?
-      = image_tag object.image.url
+      .uk-width-large
+        = image_tag object.image.url
     = f.label :image, class: 'uk-form-label'
     .uk-form-controls= f.file_field :image
     = f.hidden_field :image_cache

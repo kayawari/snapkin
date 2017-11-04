@@ -8,7 +8,8 @@
   %small.uk-text-small.uk-text-muted#lng-value{data: {lng: @diary.lng}}= @diary.lng
 .uk-margin
   - if @diary.image?
-    = image_tag @diary.image.url
+    .uk-width-large
+      = image_tag @diary.image.url
 .uk-margin
   #map
 :javascript
