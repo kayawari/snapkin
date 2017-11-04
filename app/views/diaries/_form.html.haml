@@ -1,35 +1,34 @@
-= form_for object do |f|
-  = f.label :title
-  = f.text_field :title
-  = f.label :content
-  = f.text_area :content
-  = f.label :journey_time
-  = f.datetime_select :journey_time
+= form_for(object, html: {class: 'uk-form-stacked uk-margin'}) do |f|
+  = f.label :title, class: 'uk-form-label'
+  .uk-form-controls= f.text_field :title, class: 'uk-input'
+  = f.label :content, class: 'uk-form-label'
+  .uk-form-controls= f.text_area :content, class: 'uk-input'
+  = f.label :journey_time, class: 'uk-form-label'
+  .uk-form-controls= f.datetime_select :journey_time, class: 'uk-select'
   = f.fields_for :categories do |category|
     = category.label :name
     = category.text_field :name
-  %div
-    %input#address{type: 'textbox', value: '東京駅'}
-    %input{type: 'button', value: '地図検索', onclick: 'codeAddress()'}
-  #map{style: 'width: 320px; height: 480px;'}
-  = f.label :lat
-  #lat-value{data: {lat: object.lat}}= f.text_field :lat
-  = f.label :lng
-  #lng-value{data: {lng: object.lng}}= f.text_field :lng
-  .field
+  .uk-margin
+    %input.uk-input#address{type: 'textbox', value: '東京駅'}
+    %input.uk-button.uk-button-default{type: 'button', value: '地図検索', onclick: 'codeAddress()'}
+  #map.uk-margin{style: 'width: 100%; height: 320px;'}
+  = f.label :lat, class: 'uk-form-label'
+  .uk-form-controls#lat-value{data: {lat: object.lat}}= f.text_field :lat, class: 'uk-input uk-form-small disabled'
+  = f.label :lng, class: 'uk-form-label'
+  .uk-form-controls#lng-value{data: {lng: object.lng}}= f.text_field :lng, class: 'uk-input uk-form-small disabled'
+  .field.uk-margin
     - if object.image?
       = image_tag object.image.url
-    %br
-    = f.label :image
-    = f.file_field :image
+    = f.label :image, class: 'uk-form-label'
+    .uk-form-controls= f.file_field :image
     = f.hidden_field :image_cache
-  .field
+  .field.uk-margin
     - if object.persisted? && object.image?
-      = f.label '画像削除'
-      = f.check_box :remove_image
-  = f.submit '登録'
-=render 'layouts/google_map_api'
+      = f.label '画像削除', class: 'uk-form-label'
+      .uk-form-controls= f.check_box :remove_image, class: 'uk-checkbox'
+  = f.submit '登録', class: 'uk-button uk-button-primary uk-margin'
 
+=render 'layouts/google_map_api'
 :javascript
   var geocoder;
   var map;

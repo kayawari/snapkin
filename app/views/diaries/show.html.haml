@@ -1,13 +1,16 @@
-%h1 @diary.title
-%p= @diary.content
-%p#lat-value{data: {lat: @diary.lat}}= @diary.lat
-%p#lng-value{data: {lng: @diary.lng}}= @diary.lng
-- if @diary.image?
-  = image_tag @diary.image.url
-= link_to '編集', edit_diary_path(@diary.id)
-
-%div#map
-
+%p.uk-text-lead @diary.title
+%p.uk-text-small= @diary.content
+%span.uk-text-small
+  緯度：
+  %small.uk-text-small.uk-text-muted#lat-value{data: {lat: @diary.lat}}= @diary.lat
+%span.uk-text-small
+  経度：
+  %small.uk-text-small.uk-text-muted#lng-value{data: {lng: @diary.lng}}= @diary.lng
+.uk-margin
+  - if @diary.image?
+    = image_tag @diary.image.url
+.uk-margin
+  #map
 :javascript
   var map;
   var lng = document.getElementById('lng-value');
@@ -25,8 +28,7 @@
       position: {lat: lat_value, lng: lng_value}
     });
   }
-=render 'layouts/google_map_api'
+= render 'layouts/google_map_api'
 
-%hr
-= link_to '新規日記投稿', new_diary_path
-= link_to '戻る', :back
+= link_to '編集', edit_diary_path(@diary.id), class: 'uk-button uk-button-primary'
+= link_to '戻る', :back, class: 'uk-button uk-button-default'

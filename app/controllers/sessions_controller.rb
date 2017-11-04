@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   def new
-    redirect_to user_path(session[:user_id]) unless session[:user_id].nil?
+    unless session[:user_id].nil?
+      redirect_to user_path(session[:user_id]), alert: 'ログインしました'
+    end
   end
 
   def create

@@ -1,6 +1,6 @@
 - if flash.any?
   - flash.each do |key, value|
     - if key == 'notice'
-      = content_tag(:div, value)
+      = content_tag(:div, value, class: 'uk-alert-primary uk-margin')
     - elsif key == 'alert'
-      = content_tag(:div, value)
+      = content_tag(:div, value, class: 'uk-alert-danger uk-margin')

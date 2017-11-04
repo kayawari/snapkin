@@ -1,4 +1,4 @@
 - if object.errors.any?
-  %ul
+  %ul.uk-alert-danger.uk-margin
     - object.errors.full_messages.each do |msg|
       %li= msg

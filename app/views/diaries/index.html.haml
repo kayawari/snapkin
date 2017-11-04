@@ -1,14 +1,18 @@
 = render 'layouts/flashes'
-%h1 日記一覧
+%h1.uk-h1 日記一覧
 - @diaries.each do |d|
-  %p= d.title
-  %p= d.content
-  %p= d.lat
-  %p= d.lng
-  - if d.image?
-    = image_tag d.image.url
-  = link_to '編集', edit_diary_path(d.id)
-  = link_to 'この日記を見る', diary_path(d.id)
-  %hr
-= link_to 'プロフィール', user_path(current_user)
-= link_to '新規日記投稿', new_diary_path
+  .uk-grid.uk-grid-small.uk-text-center
+    .uk-width-2-3@m.uk-width-2-3@l.uk-width-2-3@s
+    - if d.image?
+      = image_tag d.image.url
+
+    .uk-width-1-3@m.uk-width-1-3@l.uk-width-1-3@s
+      %p.uk-text-bold= d.title
+      %p.uk-text-small.uk-text-muted= d.lat
+      %p.uk-text-small.uk-text-muted= d.lng
+      .uk-margin
+        = link_to '編集', edit_diary_path(d.id), class: 'uk-button uk-button-primary uk-button-small'
+        = link_to 'この日記を見る', diary_path(d.id), class: 'uk-button uk-button-default uk-button-small'
+.uk-margin
+  = link_to 'プロフィール', user_path(current_user), class: 'uk-button uk-button-default'
+  = link_to '新規日記投稿', new_diary_path, class: 'uk-button uk-button-default'

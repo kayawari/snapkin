@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Snapkin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%# webpacker用 %>
     <%# TODO: bootstrapの適用がこれで合ってるのが微妙。。。あとで確認してみる %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,6 +14,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="uk-section uk-section-default">
+      <article class="uk-container uk-container-small">
+        <%= yield %>
+      </article>
+    </div>
   </body>
 </html>
