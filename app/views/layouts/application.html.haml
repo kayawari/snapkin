@@ -1,0 +1,14 @@
+!!! 5
+%html
+  %head
+    %title Snapkin
+    %meta{ charset: 'UTF-8' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    = javascript_pack_tag 'application','data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'application'
+    = csrf_meta_tags
+  %body
+    .uk-section.uk-section-default
+      %article.uk-container.uk-container-small
+        = yield
