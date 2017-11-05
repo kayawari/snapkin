@@ -19,6 +19,8 @@ gem 'bcrypt', '3.1.7'
 gem 'carrierwave'
 # module bundler
 gem 'webpacker'
+# worker manager
+gem 'foreman'
 
 group :development, :test do
   gem 'bullet'
