@@ -11,15 +11,11 @@ gem 'unicorn'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'haml', git: 'https://github.com/haml/haml'
-# seedの記述を便利にしてくれるgem
 gem 'seed-fu', '~> 2.3'
-# create hashed password
 gem 'bcrypt', '3.1.7'
-# fileアップローダ
 gem 'carrierwave'
-# module bundler
 gem 'webpacker'
-# worker manager
+gem 'kaminari'
 gem 'foreman'
 
 group :development, :test do
