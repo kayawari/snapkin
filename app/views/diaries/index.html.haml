@@ -14,6 +14,7 @@
       .uk-margin
         = link_to '編集', edit_diary_path(d.id), class: 'uk-button uk-button-primary uk-button-small'
         = link_to 'この日記を見る', diary_path(d.id), class: 'uk-button uk-button-default uk-button-small'
+= paginate @diaries, theme: 'custom'
 .uk-margin
   = link_to 'プロフィール', user_path(current_user), class: 'uk-button uk-button-default'
   = link_to '新規日記投稿', new_diary_path, class: 'uk-button uk-button-default'

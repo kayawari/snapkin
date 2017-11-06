@@ -1,7 +1,9 @@
 class DiariesController < ApplicationController
+  PER = 5
+
   def index
     user = User.find(current_user.id)
-    @diaries = user.diaries
+    @diaries = user.diaries.page(params[:page]).per(PER)
   end
 
   def show
