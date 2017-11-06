@@ -15,7 +15,7 @@ gem 'seed-fu', '~> 2.3'
 gem 'bcrypt', '3.1.7'
 gem 'carrierwave'
 gem 'webpacker'
-gem 'kaminari'
+gem 'kaminari', '~> 0.17.0'
 gem 'foreman'
 
 group :development, :test do
