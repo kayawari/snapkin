@@ -9,6 +9,8 @@
     = stylesheet_link_tag 'application'
     = csrf_meta_tags
   %body
+    = render 'layouts/header'
     .uk-section.uk-section-default
       %article.uk-container.uk-container-small
         = yield
+    = render 'layouts/footer'
