@@ -10,5 +10,7 @@ class Diary < ApplicationRecord
   validates :lng, presence: true, numericality: true
   validates :journey_time, presence: true
   validates_presence_of :image
+
+  # TODO: gem: file_validatorなくてもいけるなら、これは削除
   validates :image, file_size: { less_than: 3.megabytes }
 end
