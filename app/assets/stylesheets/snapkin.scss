@@ -27,7 +27,10 @@ html, body {
 
   footer {
     background-image: linear-gradient(-90deg, #BBFF4D, #4DF6FF);
+
+    small {
+      color: #fff;
+      text-shadow: 1px 1px #bbb;
+    }
   }
 }
-
-
