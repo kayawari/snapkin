@@ -1,0 +1,33 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(-90deg, #FAFAFA, #F5F5F5);
+
+  header.snapkin-header-background.uk-navbar-container {
+    background-image: linear-gradient(-90deg, #BBFF4D, #4DF6FF);
+    min-height: 60px;
+  }
+
+  header {
+    ul {
+      li {
+        a.snapkin-header-list{
+          color: #fff;
+          text-shadow: 1px 1px #bbb;
+
+          &:hover {
+            color: #cbcbcb;
+            text-shadow: 1px 1px #bbb;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    background-image: linear-gradient(-90deg, #BBFF4D, #4DF6FF);
+  }
+}
+
+

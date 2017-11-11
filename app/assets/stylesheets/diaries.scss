@@ -4,8 +4,13 @@
 #map {
   height: 100%;
 }
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+
+.diary_image {
+  overflow: hidden;
+
+  img {
+    height: 250px;
+    width: auto;
+    max-width: 100%;
+  }
 }

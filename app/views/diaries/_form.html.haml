@@ -20,12 +20,11 @@
     - if object.image?
       .uk-width-large
         = image_tag object.image.url
-    = f.label :image, class: 'uk-form-label'
     .uk-form-controls= f.file_field :image
     = f.hidden_field :image_cache
   .field.uk-margin
     - if object.persisted? && object.image?
-      = f.label '画像削除', class: 'uk-form-label'
+      = f.label '写真を削除する場合、以下にチェックを入れてください', class: 'uk-form-label uk-text-danger'
       .uk-form-controls= f.check_box :remove_image, class: 'uk-checkbox'
   = f.submit '登録', class: 'uk-button uk-button-primary uk-margin'
 

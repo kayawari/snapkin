@@ -6,4 +6,8 @@ module ApplicationHelper
   def google_map_api_key
     Rails.application.secrets.googlemap
   end
+
+  def login?
+    session[:user_id].present?
+  end
 end

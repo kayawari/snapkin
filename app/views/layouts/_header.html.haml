@@ -1,5 +1,11 @@
-%header.uk-navbar-container{uk: {sticky: ""}}
+%header.snapkin-header-background.uk-navbar-container{uk: {sticky: ""}}
   .uk-navbar
     .uk-navbar-center
-      = link_to user_path(current_user) do
-        %p Snapkin
+      = link_to 'Snapkin', '#'
+    .uk-navbar-right
+      %ul.uk-navbar-nav.uk-visible@m
+        - if login?
+          %li
+            = link_to 'PROFILE', user_path(current_user), class: 'snapkin-header-list'
+          %li
+            = link_to 'NEW POST', new_diary_path, class: 'snapkin-header-list'

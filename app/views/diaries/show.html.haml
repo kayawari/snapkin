@@ -1,23 +1,24 @@
 %p.uk-text-lead @diary.title
 %p.uk-text-small= @diary.content
+.uk-margin
+  - if @diary.image?
+    .uk-width-large
+      = image_tag @diary.image.url
+= render 'layouts/google_map_api'
 %span.uk-text-small
   緯度：
   %small.uk-text-small.uk-text-muted#lat-value{data: {lat: @diary.lat}}= @diary.lat
 %span.uk-text-small
   経度：
   %small.uk-text-small.uk-text-muted#lng-value{data: {lng: @diary.lng}}= @diary.lng
-.uk-margin
-  - if @diary.image?
-    .uk-width-large
-      = image_tag @diary.image.url
-.uk-margin
-  #map
+#map.uk-margin{style: 'width: 100%; height: 320px;'}
 :javascript
   var map;
   var lng = document.getElementById('lng-value');
   var lng_value = parseFloat(lng.getAttribute("data-lng"));
   var lat = document.getElementById('lat-value');
   var lat_value = parseFloat(lat.getAttribute("data-lat"));
+
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: lat_value, lng: lng_value},
@@ -29,7 +30,11 @@
       position: {lat: lat_value, lng: lng_value}
     });
   }
-= render 'layouts/google_map_api'
 
-= link_to '編集', edit_diary_path(@diary.id), class: 'uk-button uk-button-primary'
-= link_to '戻る', :back, class: 'uk-button uk-button-default'
+  window.onload = function () {
+    initMap();
+  };
+
+.uk-margin
+  = link_to '編集', edit_diary_path(@diary.id), class: 'uk-button uk-button-primary'
+  = link_to '戻る', :back, class: 'uk-button uk-button-default'
