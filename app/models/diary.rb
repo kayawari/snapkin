@@ -9,5 +9,9 @@ class Diary < ApplicationRecord
   validates :lat, presence: true, numericality: true
   validates :lng, presence: true, numericality: true
   validates :journey_time, presence: true
-  validates_presence_of :image
+  validates :image,
+    presence: true,
+    file_size:  {
+      maximum: 3.megabytes
+    }
 end
