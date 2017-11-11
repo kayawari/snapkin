@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-.diary_image {
+.diary-image {
   overflow: hidden;
 
   img {
@@ -13,4 +13,13 @@
     width: auto;
     max-width: 100%;
   }
+}
+
+.snapkin-photo {
+  padding: 15px;
+  box-shadow: 5px 5px 18px 10px rgba(200, 200, 200, 0.4);
+}
+
+.diary-form-cotent {
+  height: 300px;
 }
