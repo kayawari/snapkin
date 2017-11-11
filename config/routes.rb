@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
 
   resources :users
-  resources :diaries
+  resources :diaries do
+    collection do
+      get 'map_index'
+    end
+  end
 end

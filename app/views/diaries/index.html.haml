@@ -14,3 +14,4 @@
         = link_to '編集', edit_diary_path(d.id), class: 'uk-button uk-button-primary uk-button-small'
         = link_to 'この日記を見る', diary_path(d.id), class: 'uk-button uk-button-default uk-button-small uk-margin-small'
 = paginate @diaries, theme: 'custom'
+= link_to '地図バージョンに切り替える', map_index_diaries_path, class: 'uk-button uk-button-default uk-button-small uk-margin-small'

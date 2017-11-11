@@ -6,6 +6,11 @@ class DiariesController < ApplicationController
     @diaries = user.diaries.order('updated_at DESC').page(params[:page]).per(PER)
   end
 
+  def map_index
+    user = User.find(current_user.id)
+    @diaries = user.diaries
+  end
+
   def show
     @diary = Diary.find(params[:id])
   end
