@@ -3,7 +3,7 @@ class DiariesController < ApplicationController
 
   def index
     user = User.find(current_user.id)
-    @diaries = user.diaries.page(params[:page]).per(PER)
+    @diaries = user.diaries.order('updated_at DESC').page(params[:page]).per(PER)
   end
 
   def show
