@@ -1,7 +1,8 @@
 %header.snapkin-header-background.uk-navbar-container{uk: {sticky: ""}}
   .uk-navbar
     .uk-navbar-center
-      = link_to 'Snapkin', '#'
+      %a.header-logo
+        = image_tag 'logo.png'
     .uk-navbar-right
       %ul.uk-navbar-nav.uk-visible@m
         - if login?
