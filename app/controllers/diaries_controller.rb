@@ -40,11 +40,11 @@ class DiariesController < ApplicationController
 
   def update
     diary = Diary.find(params[:id])
-    if diary.update(diary_params)
-      redirect_to diaries_url, notice: '日記を編集しました'
-    else
-      render :index
+    Diary.transaction do
+      diary.categories.delete_all
+      diary.update(diary_params)
     end
+    redirect_to diaries_url, notice: '日記を編集しました'
   end
 
   def destroy
