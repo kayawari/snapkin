@@ -1,5 +1,6 @@
 class DiariesController < ApplicationController
   PER = 5
+  NUMBER_OF_CATEGORY = 3
 
   def index
     user = User.find(current_user.id)
@@ -18,9 +19,10 @@ class DiariesController < ApplicationController
   def new
     @diary = Diary.new
 
-    # カテゴリタグの入力フォームを3つ作成する
-    # TODO: カテゴリタグはどうやって反映させるか考える
-    # 3.times { @diary.categories.build }
+    # カテゴリタグは１つの日記に３つまで
+    NUMBER_OF_CATEGORY.times do
+      @diary.categories.build
+    end
   end
 
   def create

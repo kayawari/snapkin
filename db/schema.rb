@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171014142419) do
+ActiveRecord::Schema.define(version: 20171112091652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "diaries", force: :cascade do |t|
     t.string "title", null: false
@@ -30,9 +36,10 @@ ActiveRecord::Schema.define(version: 20171014142419) do
 
   create_table "diary_categories", force: :cascade do |t|
     t.bigint "diary_id"
-    t.string "name"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_diary_categories_on_category_id"
     t.index ["diary_id"], name: "index_diary_categories_on_diary_id"
   end
 
@@ -49,4 +56,6 @@ ActiveRecord::Schema.define(version: 20171014142419) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "diary_categories", "categories"
+  add_foreign_key "diary_categories", "diaries"
 end

@@ -4,6 +4,10 @@
   - if @diary.image?
     .uk-text-center.snapkin-photo
       = image_tag @diary.image.url
+.uk-margin
+  - @diary.categories.each do |category|
+    %span{uk: {icon: 'icon: tag'}}
+    %small= category.name
 %p.uk-text-small= simple_format(h @diary.content)
 #map.uk-margin{style: 'width: 100%; height: 320px;'}
 %span.uk-text-small.uk-text-muted

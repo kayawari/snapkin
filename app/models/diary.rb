@@ -1,6 +1,7 @@
 class Diary < ApplicationRecord
-  has_many :categories, class_name: 'DiaryCategory'
-  accepts_nested_attributes_for :categories, allow_destroy: true
+  has_many :diary_categories
+  has_many :categories, through: :diary_categories
+  accepts_nested_attributes_for :categories
   belongs_to :users, optional: true
   mount_uploader :image, ImageUploader
 
