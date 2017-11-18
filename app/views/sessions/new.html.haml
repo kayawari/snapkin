@@ -1,4 +1,3 @@
-= render 'layouts/flashes'
 = form_for(:session, url: login_path, html: {class: 'uk-form-horizontal'}) do |f|
   = f.label :email, class: 'uk-form-label'
   .uk-form-controls= f.email_field :email, class: 'uk-input'

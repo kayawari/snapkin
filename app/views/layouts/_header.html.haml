@@ -1,4 +1,4 @@
-%header.snapkin-header-background.uk-navbar-container{uk: {sticky: ""}}
+%header.snapkin-header-background.uk-navbar-container
   .uk-navbar
     .uk-navbar-center
       %a.header-logo
@@ -10,3 +10,5 @@
             = link_to 'PROFILE', user_path(current_user), class: 'snapkin-header-list'
           %li
             = link_to 'NEW POST', new_diary_path, class: 'snapkin-header-list'
+.uk-navbar-container.uk-text-center
+  = render 'layouts/flashes'
