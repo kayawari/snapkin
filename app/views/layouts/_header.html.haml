@@ -1,13 +1,15 @@
 %header.snapkin-header-background.uk-navbar-container
   .uk-navbar
     .uk-navbar-center
-      %a.header-logo
+      %a.header-logo{href: diaries_path}
         = image_tag 'logo.png'
     .uk-navbar-right
       %ul.uk-navbar-nav.uk-visible@m
         - if login?
           %li
             = link_to 'PROFILE', user_path(current_user), class: 'snapkin-header-list'
+          %li
+            = link_to 'LIST', diaries_path, class: 'snapkin-header-list'
           %li
             = link_to 'NEW POST', new_diary_path, class: 'snapkin-header-list'
 .uk-navbar-container.uk-text-center
