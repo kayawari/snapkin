@@ -1,35 +1,30 @@
-= render 'layouts/google_map_api'
 #map{style: 'width: 100%; height: 540px;'}
 - @diaries.each do |d|
-  %div{data: {number: d.id}, id: 'number', style: 'display: none;'}
-  %div{data: {lat: d.lat}, id: "lat-value-#{d.id}", style: 'display: none;'}
-  %div{data: {lng: d.lng}, id: "lng-value-#{d.id}", style: 'display: none;'}
-  :javascript
-    t var map;
-    var number = document.getElementById('number');
-    var number_value = number.getAttribute("data-number");
-    var lng = document.getElementById('lng-value-' + number_value);
-    var lng_value = parseFloat(lng.getAttribute("data-lng"));
-    var lat = document.getElementById('lat-value-' + number_value);
-    var lat_value = parseFloat(lat.getAttribute("data-lat"));
-    console.log(lng_value);
-    console.log(lat_value);
+  %div{data: {lat: d.lat}, class: "lat-value", style: 'display: none;'}
+  %div{data: {lng: d.lng}, class: "lng-value", style: 'display: none;'}
+= render 'layouts/google_map_api'
+:javascript
+  var map;
+  var lngs = document.getElementsByClassName('lng-value');
+  var lats = document.getElementsByClassName('lat-value');
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 35.6811673, lng: 139.7670516},
+      zoom: 8
+    });
 
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 35.6811673, lng: 139.7670516},
-        zoom: 8
-      });
-    }
-
-    function makeMaker() {
+    for(var i = 0; i < lngs.length; i++){
+      var lng_value = parseFloat(lngs.item(i).getAttribute("data-lng"));
+      var lat_value = parseFloat(lats.item(i).getAttribute("data-lat"));
+      console.log(lng_value);
+      console.log(lat_value);
       var marker = new google.maps.Marker({
         map: map,
         position: {lat: lat_value, lng: lng_value}
       });
     }
-    makeMaker();
+  }
 
-    window.onload = function () {
-      initMap();
-    };
+  window.onload = function () {
+    initMap();
+  };

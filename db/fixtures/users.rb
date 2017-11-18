@@ -14,16 +14,20 @@ User.seed do |u|
   u.default_lat = '139.738115'
 end
 
+# %w[東京駅 東京タワー 池袋駅 葉山駅 富士山 京都駅]
+# 緯度
+lats = %w[35.681167 35.658581 35.729503 35.297389 35.360556 34.985849]
+# 経度
+lngs = %w[139.767052 139.745433 139.710900 139.578381 138.727778 135.758767]
 # 日記
 6.times do |i|
-  i = i + 1
   Diary.seed do |d|
     d.user_id = User.first.id
-    d.title = "サンプルタイトル#{i}"
+    d.title = "サンプルタイトル#{i+1}"
     d.content = "あいうえおあいうえお\n\rあいうえおあいうえお\n\rあいうえおあいうえお\n\rあいうえおあいうえお\n\r"
-    d.lat = 139.7670516
-    d.lng = 35.6811673
+    d.lat = lats[i]
+    d.lng = lngs[i]
     d.journey_time = '2017-10-29 10:00:00'
-    d.image = Rails.root.join("db/fixtures/images/img_0#{i}.jpg").open
+    d.image = Rails.root.join("db/fixtures/images/img_0#{i+1}.jpg").open
   end
 end
