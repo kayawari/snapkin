@@ -49,7 +49,7 @@ class DiariesController < ApplicationController
 
   def destroy
     diary = Diary.find(params[:id])
-    diary.delete
+    diary.destroy
     redirect_to diaries_url, notice: '日記の削除が完了しました'
   end
 

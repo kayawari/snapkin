@@ -1,5 +1,5 @@
 class Diary < ApplicationRecord
-  has_many :diary_categories
+  has_many :diary_categories, dependent: :destroy
   has_many :categories, through: :diary_categories
   accepts_nested_attributes_for :categories
   belongs_to :users, optional: true
