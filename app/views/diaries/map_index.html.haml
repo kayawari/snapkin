@@ -2,11 +2,13 @@
 - @diaries.each do |d|
   %div{data: {lat: d.lat}, class: "lat-value", style: 'display: none;'}
   %div{data: {lng: d.lng}, class: "lng-value", style: 'display: none;'}
+  %div{data: {url: diary_path(d.id)}, class: "url-value", style: 'display: none;'}
 = render 'layouts/google_map_api'
 :javascript
   var map;
   var lngs = document.getElementsByClassName('lng-value');
   var lats = document.getElementsByClassName('lat-value');
+  var urls = document.getElementsByClassName('url-value');
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 35.6811673, lng: 139.7670516},
@@ -16,12 +18,17 @@
     for(var i = 0; i < lngs.length; i++){
       var lng_value = parseFloat(lngs.item(i).getAttribute("data-lng"));
       var lat_value = parseFloat(lats.item(i).getAttribute("data-lat"));
+      var url_value = urls.item(i).getAttribute("data-url");
       console.log(lng_value);
       console.log(lat_value);
+      console.log(url_value);
       var marker = new google.maps.Marker({
         map: map,
         position: {lat: lat_value, lng: lng_value}
       });
+      google.maps.event.addListener(marker, 'click', (function(url){
+        return function(){location.href = url;};
+      })(url_value));
     }
   }
 
