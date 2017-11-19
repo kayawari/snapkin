@@ -1,6 +1,7 @@
-= form_for(:session, url: login_path, html: {class: 'uk-form-horizontal'}) do |f|
-  = f.label :email, class: 'uk-form-label'
-  .uk-form-controls= f.email_field :email, class: 'uk-input'
-  = f.label :password, class: 'uk-form-label'
-  .uk-form-controls= f.password_field :password, class: 'uk-input'
-  = f.submit 'ログイン', class: 'uk-button uk-button-primary uk-margin'
+.uk-text-center
+  = form_for(:session, url: login_path, html: {class: 'uk-form-horizontal'}) do |f|
+    = f.label :email, class: 'uk-form-label'
+    .uk-form-controls= f.email_field :email, class: 'uk-input'
+    = f.label :password, class: 'uk-form-label'
+    .uk-form-controls= f.password_field :password, class: 'uk-input'
+    = f.submit 'ログイン', class: 'uk-button uk-button-primary uk-margin'
