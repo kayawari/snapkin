@@ -1,8 +1,7 @@
 class SessionsController < ApplicationController
+  skip_before_action :user_login?, only: [:new, :create, :destroy]
+
   def new
-    unless session[:user_id].nil?
-      redirect_to user_path(session[:user_id]), alert: 'ログインしました'
-    end
   end
 
   def create

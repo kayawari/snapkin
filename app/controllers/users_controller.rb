@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :user_login?, only: [:new, :create]
+
   def show
     unless params[:id].to_i == session[:user_id]
       redirect_to user_url(session[:user_id]), notice: '指定したURLは表示できません'
