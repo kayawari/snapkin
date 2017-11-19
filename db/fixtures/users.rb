@@ -12,6 +12,7 @@ User.seed do |u|
   u.nick_name = 'テス太'
   u.default_lng = '35.628401'
   u.default_lat = '139.738115'
+  u.image = Rails.root.join("db/fixtures/images/profile_image.jpg").open
 end
 
 # %w[東京駅 東京タワー 池袋駅 葉山駅 富士山 京都駅]

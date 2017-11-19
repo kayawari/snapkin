@@ -1,4 +1,10 @@
 = form_for(object, html: {class: 'uk-form-horizontal'}) do |f|
+  .field.uk-margin
+    - if object.image?
+      .uk-width-large
+        = image_tag object.image.url
+    .uk-form-controls= f.file_field :image
+    = f.hidden_field :image_cache
   = f.label :first_name, class: 'uk-form-label'
   .uk-form-controls-text= f.text_field :first_name, class: 'uk-input'
   = f.label :last_name, class: 'uk-form-label'
