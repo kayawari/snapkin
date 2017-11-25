@@ -10,11 +10,11 @@
     = csrf_meta_tags
   %body
     = render 'layouts/header'
-    - if current_page?(map_index_diaries_path)
+    - if current_page?(detail_services_path)
       %article
         = yield
     - else
-      .uk-margin
-        %article.uk-container.uk-container-small
+      %article
+        .uk-container
           = yield
     = render 'layouts/footer'

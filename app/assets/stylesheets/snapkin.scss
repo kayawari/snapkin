@@ -25,10 +25,26 @@ html, body {
     }
   }
 
-  .header-logo {
-    img {
-      width: auto;
-      max-height: 60px;
+  .header-logo-wrap {
+    padding: 10px;
+
+    .header-logo {
+      img {
+        width: auto;
+        max-height: 60px;
+      }
+    }
+  }
+
+  .snapkin-service-top {
+    background: image-url('top_01.jpg') no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 320px;
+
+    .snapkin-service-top-background {
+      background-color: rgba(255,255,255,0.5);
+      box-shadow: rgba(255,255,255,0.5) 0px 0px 50px 50px;
     }
   }
 

@@ -1,11 +1,11 @@
 %header.snapkin-header-background.uk-navbar-container
   .uk-navbar
-    .uk-navbar-center
+    .uk-navbar-center.header-logo-wrap
       %a.header-logo{href: diaries_path}
         = image_tag 'logo.png'
-    .uk-navbar-right
-      %ul.uk-navbar-nav.uk-visible@m
-        - if login?
+    - if login?
+      .uk-navbar-right
+        %ul.uk-navbar-nav.uk-visible@m
           %li
             = link_to 'PROFILE', user_path(current_user), class: 'snapkin-header-list'
           %li

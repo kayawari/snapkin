@@ -1,0 +1,27 @@
+.uk-text-center.uk-inline.uk-margin.snapkin-service-top
+  %p.uk-h3.uk-position-small.uk-position-center.snapkin-service-top-background
+    その思い出の一枚は、どこで撮りましたか？
+    %br
+    %span.uk-text-small 旅先で撮ったお気に入りの写真を、地図上で管理することができます。
+.uk-container.uk-container-small.uk-margin.uk-text-large@m
+  .uk-flex-middle{uk: {grid: ''}}
+    .uk-width-2-3@m.uk-width-2-3@s.uk-text-large
+      %p
+        Snapkin（スナプキン）は日記投稿サービスです。
+        %br
+        日記を書いて、写真１枚と撮影場所を保存するだけ。
+    .uk-width-1-3@m.uk-width-1-3@s.uk-flex-first
+      = image_tag 'service_logo_1.png'
+  .uk-flex-middle{uk: {grid: ''}}
+    .uk-width-1-3@m.uk-width-1-3@s
+      = image_tag 'service_logo_2.png'
+    .uk-width-2-3@m.uk-width-2-3@s.uk-text-large.uk-flex-first
+      %p 写真を撮ったら、どこで撮影したのかをGoogleMapで確認することができます。
+  .uk-flex-middle{uk: {grid: ''}}
+    .uk-width-2-3@m.uk-width-2-3@s.uk-text-large
+      %p 他のユーザーが撮影した写真や日記を見て、「いいね」が押せる機能も実装予定！！（もうちょっと待ってね）
+    .uk-width-1-3@m.uk-width-1-3@s.uk-flex-first
+      = image_tag 'service_logo_3.png'
+  .uk-margin.uk-text-center
+    = link_to 'ユーザー登録はこちら', new_user_path, class: 'uk-button uk-button-primary uk-button-large'
+    = link_to 'ログイン', login_path, class: 'uk-button uk-button-default uk-button-large'
