@@ -1,3 +1,5 @@
+#lat-value{data: {lat: @default_lat}, style: 'display:none'}
+#lng-value{data: {lng: @default_lng}, style: 'display:none'}
 = form_for(object, html: {class: 'uk-form-stacked uk-margin'}) do |f|
   = f.label :title, class: 'uk-form-label'
   .uk-form-controls= f.text_field :title, class: 'uk-input'
@@ -13,9 +15,9 @@
     %input.uk-button.uk-button-default{type: 'button', value: '地図検索', onclick: 'codeAddress()'}
   #map.uk-margin{style: 'width: 100%; height: 320px;'}
   = f.label :lat, class: 'uk-form-label'
-  .uk-form-controls#lat-value{data: {lat: object.lat}}= f.text_field :lat, class: 'uk-input uk-form-small disabled'
+  .uk-form-controls#lat-value-form= f.text_field :lat, class: 'uk-input uk-form-small disabled'
   = f.label :lng, class: 'uk-form-label'
-  .uk-form-controls#lng-value{data: {lng: object.lng}}= f.text_field :lng, class: 'uk-input uk-form-small disabled'
+  .uk-form-controls#lng-value-form= f.text_field :lng, class: 'uk-input uk-form-small disabled'
   .field.uk-margin
     - if object.image?
       .uk-width-large
@@ -32,16 +34,19 @@
 :javascript
   var geocoder;
   var map;
+  var MarkerArray = new google.maps.MVCArray();
   var lng = document.getElementById('lng-value');
   var lng_value = parseFloat(lng.getAttribute("data-lng"));
   var lat = document.getElementById('lat-value');
   var lat_value = parseFloat(lat.getAttribute("data-lat"));
+  var lng_value_form = document.getElementById('lng-value-form');
+  var lat_value_form = document.getElementById('lat-value-form');
 
   function init() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(lat_value, lng_value);
     var mapOptions = {
-      zoom: 12,
+      zoom: 8,
       center: latlng
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -49,23 +54,22 @@
       map: map,
       position: {lat: lat_value, lng: lng_value}
     });
+    MarkerArray.push(marker);
   }
 
   function codeAddress() {
     var address = document.getElementById('address').value;
     geocoder.geocode({'address': address}, function(results, status) {
       if(status == 'OK') {
+        MarkerArray.forEach(function (marker, idx) { marker.setMap(null); });
         map.setCenter(results[0].geometry.location);
-
-        // 地図にマーカーを付ける
         var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
         });
-
-        // 緯度、経度のフォームを更新する
-        lng.children[0].value = results[0].geometry.location.lng();
-        lat.children[0].value = results[0].geometry.location.lat();
+        MarkerArray.push(marker);
+        lng_value_form.children[0].value = results[0].geometry.location.lng();
+        lat_value_form.children[0].value = results[0].geometry.location.lat();
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }

@@ -18,6 +18,8 @@ class DiariesController < ApplicationController
 
   def new
     @diary = Diary.new
+    @default_lat = current_user.default_lat
+    @default_lng = current_user.default_lng
 
     # カテゴリタグは１つの日記に３つまで
     NUMBER_OF_CATEGORY.times do
@@ -27,6 +29,8 @@ class DiariesController < ApplicationController
 
   def create
     @diary = Diary.new(diary_params.merge(user_id: current_user.id))
+    @default_lat = current_user.default_lat
+    @default_lng = current_user.default_lng
     if @diary.save(diary_params)
       redirect_to diaries_url, notice: '日記を登録しました'
     else

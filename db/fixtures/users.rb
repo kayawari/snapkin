@@ -10,8 +10,8 @@ User.seed do |u|
   u.first_name = 'テスト'
   u.last_name = '太郎'
   u.nick_name = 'テス太'
-  u.default_lng = '35.628401'
-  u.default_lat = '139.738115'
+  u.default_lng = '139.738115'
+  u.default_lat = '35.628401'
   u.image = Rails.root.join("db/fixtures/images/profile_image.jpg").open
 end
 

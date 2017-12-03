@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :diaries
+  has_many :diaries, dependent: :delete_all
   has_many :diary_categories
   mount_uploader :image, ImageUploader
 
