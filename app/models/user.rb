@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token
+
   has_many :diaries, dependent: :delete_all
   has_many :diary_categories
   mount_uploader :image, ImageUploader
@@ -19,4 +21,9 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: {minimum: 8}, on: :create
+
+  # ランダムなトークンを返す
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
 end
