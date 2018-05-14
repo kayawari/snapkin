@@ -16,4 +16,5 @@ bundle exec rake db:migrate
 bundle exec rake db:migrate
 
 Hoge
+Fuga2
 Hoge2
