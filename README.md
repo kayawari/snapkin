@@ -14,4 +14,5 @@ bundle exec rake db:migrate
 
 # もしテーブル定義を変更している場合は作り直す
 bundle exec rake db:migrate
-```
+
+Hoge
